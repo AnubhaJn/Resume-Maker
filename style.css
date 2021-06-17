@@ -1,0 +1,46 @@
+
+    .container-fluid {
+        width: 100%;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .my-img{
+        border-radius: 0.5 px black;
+        width: 200px;
+        height: 250px;
+    }
+
+    #resume-form{
+        display: block;
+    }
+
+    #resume-template{
+        display:none;
+        font-size: 12px;
+    }
+
+    .background{
+        background-color: rgb(209, 170, 170);
+    }
+
+    .body-background{
+       background-color: rgb(243, 225, 225);
+    }
+
+
+    /***************** hide buttons on webpage after clicking on download resume **********************************/
+@media print {
+    .operation {
+       visibility: hidden;
+    }
+ }
+
+ .nav-link:hover {
+    background-color: rgb(219, 141, 40);
+    padding: 1em;
+  }

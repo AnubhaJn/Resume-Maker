@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>ResuMaker</title>
+
+</head>
+
+<body>
+    <!----------------------------------------------------------------HTML for resume form-------------------------------------------------------------------------------------->
+    <div class="container-fluid" id="resume-form">
+
+        <div class="row overflow-auto ">
+           <!------------------------------------------------Side Bar ---------------------------------------------------->
+            <div class="col-3 px-4 py-3 bg-warning position-fixed text-center" id="sticky-sidebar ">
+                <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-2 ">
+                    <h1 class="text-dark ">ResuMaker</h1>
+                    <hr class="text-dark">
+                    <a href="index.html#personal-details" class="nav-link link-dark ">Personal Details</a>
+                    <a href="index.html#link-profiles" class="nav-link link-dark mt-1">Link your Profiles</a>
+                    <a href="index.html#objective" class="nav-link link-dark mt-1">Objective</a>
+                    <a href="index.html#acedmics" class="nav-link link-dark mt-1">Academic Qualifications</a>
+                    <a href="index.html#work-ex" class="nav-link link-dark mt-1">Work Experience</a>
+                    <a href="index.html#certificates" class="nav-link link-dark mt-1">Certificates/Achievements</a>
+                    <a href="index.html#projects" class="nav-link link-dark mt-1">Projects</a>
+
+                    <div class="container btn-group text-center p-2 mt-1">
+                        <button onclick="toggle()" class="btn btn-dark btn-lg">Edit/Preview Resume</button>
+                    </div>
+                    <div class="container btn-group text-center p-2 mt-0">
+                        <button onclick="generateResume()" class="btn btn-dark btn-lg">Generate Resume</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content col-9 offset-3 bg-dark overflow-auto p-4 ">
+
+                <h2 class="text-warning mt-2 text-center" id="details">ENTER YOUR RESUME DETAILS</h2>
+                <h4 class="text-warning mt-4" id="personal-details">Personal Details</h4>
+
+                <div class="form-group mt-1">
+                    <label for="name-field " style="color: beige; ">Name</label>
+                    <input type="text " id="name-field" placeholder="Enter Your Name " class="form-control">
+                </div>
+
+                <div class="form-group mt-2">
+                    <label style="color: beige; ">Upload Display Picture</label>
+                    <input id="imgField" type="file" class="form-control" alt="">
+                </div>
+                <div class="form-group mt-2 ">
+                    <label for="contact-field" style="color: beige; ">Contact Number</label>
+                    <input type="text " id="contact-field" placeholder="Enter Your contact Number "
+                        class="form-control" pattern="[1-9]{1}[0-9]{9}">
+                </div>
+                <div class="form-group mt-2 ">
+                    <label for="address-field" style="color: beige; ">Address</label>
+                    <textarea rows="4" id="address-field" placeholder="Enter Your Address "
+                        class="form-control "></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="email-field " style="color: beige; ">Email Address</label>
+                    <input type="text" id="email-field" placeholder="Enter Your email id" class="form-control">
+                </div>
+
+
+
+
+                <h4 class="text-warning mt-5 " id="link-profiles">Link your Profiles</h4>
+
+                <div class="form-group mt-2 ">
+                    <label for="github-profile-field" style="color: beige; ">GitHub profile </label>
+                    <input type="text " id="github-profile-field" placeholder="Enter your Github profile Link "
+                        class="form-control ">
+                </div>
+                <div class="form-group mt-2 ">
+                    <label for="LinkedIn-profile-field" style="color: beige; ">LinkedIn profile</label>
+                    <input type="text " id="LinkedIn-profile-field" placeholder="Enter your LinkedIn Link "
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2 ">
+                    <label for="HackerRank-profile-field " style="color: beige; ">HackerRank profile</label>
+                    <input type="text " id="HackerRank-profile-field" placeholder="Enter your HackerRank Link "
+                        class="form-control ">
+                </div>
+
+
+
+                <h4 class="text-warning mt-5 " id="objective">Objective</h4>
+                <div class="form-group mt-3 ">
+                    <label for="" style="color: beige; ">Add your Objective:</label>
+                    <textarea id="objective-field" rows="3" placeholder="Enter objective/profile summary"
+                        class="form-control wxField1 "></textarea>
+                </div>
+
+
+                <h4 class="text-warning mt-5 " id="acedmics">Academic Qualifications</h4>
+                <div class="form-group mt-3" id="acad-qual">
+                    <label for="" style="color: beige; ">Add your Qualifications:</label>
+                    <textarea rows="3" placeholder="Enter qulifications as per newest to oldest" class="form-control aqField"></textarea>
+                    <div class="container text-center mt-2" id="aqAddButton">
+                        <button onclick="addNewAcad()" class="btn btn-warning btn-sm btn-lg float-end">Add +</button>
+                    </div>
+                </div>
+
+
+                <h4 class="text-warning mt-5" id="work-ex">Work Experience</h4>
+                <div class="form-group mt-3" id="work-exp">
+                    <label for="wxField" style="color: beige; ">Add Trainings/Internships:</label>
+                    <textarea rows="3" placeholder="Enter here" class="form-control wxField"></textarea>
+                    <div class="container text-center mt-2" id="wxAddButton">
+                        <button onclick="addNewWorkEx()" class="btn btn-warning btn-sm btn-lg float-end">Add +</button>
+                    </div>
+                </div>
+
+
+                <h4 class="text-warning mt-5" id="certificates">Certifications/Achievements</h4>
+                <div class="form-group mt-3" id="certificate">
+                    <label for="certiField" style="color: beige; ">Add your Certificates/Achievements:</label>
+                    <textarea rows="3" placeholder="Enter your certifications or achievements" class="form-control certiField"></textarea>
+                    <div class="container text-center mt-2" id="certiAddButton">
+                        <button onclick="addNewCerti()" class="btn btn-warning btn-sm btn-lg float-end">Add +</button>
+                    </div>
+                </div>
+
+
+                <h4 class="text-warning mt-5" id="project">Projects</h4>
+                <div class="form-group mt-3" id="projects">
+                    <label for="projectField" style="color: beige; ">Add your Projects:</label>
+                    <textarea rows="3" placeholder="Enter the projects done with newest to oldest" class="form-control projectField"></textarea>
+                    <div class="container text-center mt-2" id="projAddButton">
+                        <button onclick="addNewProject()" class="btn btn-warning btn-sm btn-lg float-end">Add +</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!---------------------------------------------------------------HTML for resume template -------------------------------------------------------------------------------------->
+    <div class="container" id="resume-template">
+        <div class="row">
+            <!---------------------------------------- left section of resume template -------------------------------------------------------------------------------------->
+            <div class="col-4 text-center background">
+                    <img src="https://png.pngtree.com/png-vector/20190307/ourlarge/pngtree-vector-edit-profile-icon-png-image_760869.jpg"
+                    alt=" " class="img-fluid my-img mt-2" id="temp-image"/>
+                
+                
+                <div class="container1 ">
+                    <h4 id="temp-name-field" class="mt-2">ANUBHA JAIN</h4>
+                    <p id="temp-contact-field"><i class="fas fa-mobile-alt p-2"></i>9958287894</p>
+                    <p id="temp-address-field"><i class="fas fa-map-marker-alt p-2"></i>53/16,Ramjas Road, Karol
+                        Bagh </br> New Delhi - 110005</p>
+                    <p id="temp-email-field"><i class="fas fa-envelope-open-text p-2"></i></p>
+                    <hr />
+                    <p id="temp-github-profile-field"><i class="fab fa-github p-2"></i></p>
+                    <p id="temp-LinkedIn-profile-field"><i class="fab fa-linkedin p-2"></i></p>
+                    <p id="temp-HackerRank-profile-field"><i class="fab fa-hackerrank p-2"></i></p>
+                </div>
+
+            </div>
+            <!-----------------------------------------right section of resume template -------------------------------------------------------------------------------------->
+            <div class="col-8 ">
+                <div class="card">
+                    <div class="card-header background">
+                        <h4>Objective</h4>
+                    </div>
+                    <div class="card-body body-background">
+                        <p id="temp-objective-field">My objective is to...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mt-1">
+                    <div class="card-header background">
+                        <h4>Academic Qualification</h4>
+                    </div>
+                    <div class="card-body body-background">
+                        <ul id="temp-aqField">
+                            <li>qualificaions 1</li>
+                            <li>qualifications 2</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="card mt-1">
+                    <div class="card-header background">
+                        <h4>Work Experience</h4>
+                    </div>
+                    <div class="card-body body-background">
+                        <ul id="temp-wxField">
+                            <li>experience 1</li>
+                            <li>experience 2</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="card mt-1">
+                    <div class="card-header background">
+                        <h4>Cerifications/Achievements</h4>
+                    </div>
+                    <div class="card-body body-background">
+                        <ul id="temp-certiField">
+                            <li>certificate 1</li>
+                            <li>certificate 2</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="card mt-1">
+                    <div class="card-header background">
+                        <h4>Projects</h4>
+                    </div>
+                    <div class="card-body body-background">
+                        <ul id="temp-projectField">
+                            <li>Project 1</li>
+                            <li>Project 2</li>
+                        </ul>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="operation">
+                <div class="container mt-5 btn-group text-center ">
+                    <button class="btn bg-dark  p-2 ml-2" style="color:beige" onclick="printResume()">Download</button>
+                </div>
+                <div class="container mt-2 btn-group text-center ">
+                    <button class="btn bg-dark p-2 mr-5" syle="margin-right:2px;" style="color:beige" onclick="toggle()">Edit Resume</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!------------------------------------------- adding scripts in html -------------------------------------------------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 "
+        crossorigin="anonymous "></script>
+    <script src="script.js "></script>
+
+</body>
+
+</html>
